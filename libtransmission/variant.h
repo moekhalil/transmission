@@ -217,6 +217,7 @@ public:
         {
             val_.emplace<StringHolder>(std::string{ value });
         }
+
         // note: std::is_integral_v<bool> is true, so this check
         // must come first to prevent bools from being stored as ints
         else if constexpr (std::is_same_v<Val, bool>)
@@ -417,7 +418,7 @@ tr_variant* tr_variantListAddReal(tr_variant* var, double value);
 tr_variant* tr_variantListAddStr(tr_variant* var, std::string_view value);
 tr_variant* tr_variantListAddStrView(tr_variant* var, std::string_view value);
 tr_variant* tr_variantListAddQuark(tr_variant* var, tr_quark value);
-tr_variant* tr_variantListAddRaw(tr_variant* var, void const* value, size_t value_len);
+tr_variant* tr_variantListAddRaw(tr_variant* var, void const* value, size_t n_bytes);
 tr_variant* tr_variantListAddList(tr_variant* var, size_t n_reserve);
 tr_variant* tr_variantListAddDict(tr_variant* var, size_t n_reserve);
 tr_variant* tr_variantListChild(tr_variant* var, size_t pos);
